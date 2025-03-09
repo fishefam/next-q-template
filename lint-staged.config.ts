@@ -28,10 +28,7 @@ function createTemporaryTsconfig(files: string[]) {
   const tsconfigContent = readFileSync('./tsconfig.json', { encoding: 'utf8' })
   const rootConfigs = JSON.parse(tsconfigContent)
   const config = {
-    compilerOptions: {
-      ...rootConfigs.compilerOptions,
-      incremental: false,
-    },
+    compilerOptions: { ...rootConfigs.compilerOptions, incremental: false },
     exclude: [...rootConfigs.exclude, 'eslint.config.ts'],
     include: files,
   }
