@@ -13,21 +13,26 @@ export default function config(files: string[]) {
   const markupFiles = micromatch.match(files, generateMatchers(markupExtensions))
   const filesToFormat = [codeFiles, markupFiles].flat()
   createTemporaryTsconfig(codeFiles)
-  const tasks = [
-    `tsc --project ${TEMP_TSCONFIG_FILE}`,
-    `rimraf ${TEMP_TSCONFIG_FILE}`,
-    `prettier ${filesToFormat.join(' ')} --write`,
-    `eslint ${codeFiles.join(' ')} --fix`,
-  ]
-  return codeFiles.length > 0 ? tasks : tasks.slice(1)
+  const tscTask = `tsc --project ${TEMP_TSCONFIG_FILE}`
+  const tscCleanupTask = `rimraf ${TEMP_TSCONFIG_FILE}`
+  const formatTask = `prettier ${filesToFormat.join(' ')} --write`
+  const lintTask = `eslint ${codeFiles.join(' ')} --fix`
+  const tasks = []
+  if (codeFiles.length > 0) tasks.push(tscTask, tscCleanupTask)
+  if (filesToFormat.length > 0) tasks.push(formatTask)
+  if (codeFiles.length > 0) tasks.push(lintTask)
+  return tasks
 }
 
 function createTemporaryTsconfig(files: string[]) {
   const tsconfigContent = readFileSync('./tsconfig.json', { encoding: 'utf8' })
   const rootConfigs = JSON.parse(tsconfigContent)
   const config = {
-    compilerOptions: { ...rootConfigs.compilerOptions, incremental: false },
-    exclude: rootConfigs.exclude,
+    compilerOptions: {
+      ...rootConfigs.compilerOptions,
+      incremental: false,
+    },
+    exclude: [...rootConfigs.exclude, 'eslint.config.ts'],
     include: files,
   }
   writeFileSync(TEMP_TSCONFIG_FILE, JSON.stringify(config))

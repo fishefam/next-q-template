@@ -125,6 +125,7 @@ const config: Linter.Config[] = [
     rules: {
       'react/self-closing-comp': 'error',
       'require-await': 'error',
+      'unicorn/no-nested-ternary': 'off',
     },
   },
   {
