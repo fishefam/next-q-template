@@ -22,12 +22,7 @@ const config: Linter.Config[] = [
     rules: {
       'unicorn/prevent-abbreviations': [
         'error',
-        {
-          allowList: {
-            props: true,
-            utils: true,
-          },
-        },
+        { allowList: { ProcessEnv: true, props: true, utils: true } },
       ],
     },
   },
@@ -60,20 +55,9 @@ const config: Linter.Config[] = [
         {
           default: 'disallow',
           rules: [
+            { allow: ['shared'], from: ['shared'] },
             {
-              allow: ['shared'],
-              from: ['shared'],
-            },
-            {
-              allow: [
-                'shared',
-                [
-                  'feature',
-                  {
-                    featureName: '${from.featureName}',
-                  },
-                ],
-              ],
+              allow: ['shared', ['feature', { featureName: '${from.featureName}' }]],
               from: ['feature'],
             },
             {
