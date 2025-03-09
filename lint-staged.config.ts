@@ -8,16 +8,16 @@ export default function config(files: string[]) {
   const typescriptExtensions = generateCodeExtensions('ts')
   const codeExtensions = [javascriptExtensions, typescriptExtensions].flat()
   // prettier-ignore
-  const markupExtensions = ['css', 'less', 'scss', 'html', 'vue', 'json', 'json5', 'jsonc', 'md', 'markdown', 'mdx', 'yaml', 'yml', 'graphql', 'gql', 'sol', 'svelte', 'php', 'phtml', 'mjml']
+  const markupExtensions = ['css', 'scss', 'html', 'json', 'json5', 'jsonc', 'md', 'markdown', 'mdx', 'yaml', 'yml', 'graphql', 'gql']
   const codeFiles = micromatch.match(files, generateMatchers(codeExtensions))
   const markupFiles = micromatch.match(files, generateMatchers(markupExtensions))
   const filesToFormat = [codeFiles, markupFiles].flat()
-  createTemporaryTsconfig(codeFiles)
   const tscTask = `tsc --project ${TEMP_TSCONFIG_FILE}`
   const tscCleanupTask = `rimraf ${TEMP_TSCONFIG_FILE}`
   const formatTask = `prettier ${filesToFormat.join(' ')} --write`
   const lintTask = `eslint ${codeFiles.join(' ')} --fix`
   const tasks = []
+  createTemporaryTsconfig(codeFiles)
   if (codeFiles.length > 0) tasks.push(tscTask, tscCleanupTask)
   if (filesToFormat.length > 0) tasks.push(formatTask)
   if (codeFiles.length > 0) tasks.push(lintTask)
