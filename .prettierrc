@@ -1,0 +1,10 @@
+{
+  "endOfLine": "lf",
+  "semi": false,
+  "htmlWhitespaceSensitivity": "ignore",
+  "printWidth": 100,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "quoteProps": "consistent",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
