@@ -8,7 +8,6 @@ This repository provides a streamlined Next.js project template that is optimize
 - **Bun Package Manager**: Uses Bun for fast package management and execution.
 - **TypeScript Support**: Ensures static typing for improved code quality.
 - **ESLint & Prettier**: Pre-configured for consistent code formatting and linting.
-- **Jest Testing**: Integrated for unit and integration testing.
 - **Tailwind CSS**: Utility-first CSS framework for rapid styling.
 
 ## Prerequisites
@@ -47,6 +46,6 @@ This will start the application at `http://localhost:3000`.
 ## Notes
 
 - This template is **Bun-only** and does not support `npm` or `yarn` or `pnpm`. Please ensure you have Bun installed before using this template.
-- You can modify the configuration files such as `next.config.js`, `tailwind.config.js`, and `tsconfig.json` to fit your project needs.
+- You can modify the configuration files such as `next.config.ts`, `tsconfig.json`, etc. to fit your project needs.
 
 For more details, refer to the official Bun documentation: [https://bun.sh/](https://bun.sh/).
