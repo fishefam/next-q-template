@@ -1,9 +1,11 @@
 declare module 'eslint-plugin-import' {
-  const imprt: import('eslint').ESLint.Plugin
+  const imprt: EslintPlugin
   export default imprt
 }
 
 declare module 'eslint-plugin-boundaries' {
-  const boundaries: import('eslint').ESLint.Plugin
+  const boundaries: EslintPlugin
   export default boundaries
 }
+
+type EslintPlugin = import('eslint').ESLint.Plugin
