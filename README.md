@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Quick Template (Bun Only)
+
+This repository provides a streamlined Next.js project template that is optimized for use with Bun as the package manager and runtime. It offers a solid foundation for developing efficient and scalable Next.js applications with modern tooling.
+
+## Features
+
+- **Next.js Integration**: Server-side rendering (SSR) and static site generation (SSG) support.
+- **Bun Package Manager**: Uses Bun for fast package management and execution.
+- **TypeScript Support**: Ensures static typing for improved code quality.
+- **ESLint & Prettier**: Pre-configured for consistent code formatting and linting.
+- **Jest Testing**: Integrated for unit and integration testing.
+- **Tailwind CSS**: Utility-first CSS framework for rapid styling.
+
+## Prerequisites
+
+- [Bun](https://bun.sh/) must be installed on your system.
 
 ## Getting Started
 
-First, run the development server:
+1. **Using `create-next-app` with this template:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```sh
+   npx create-next-app my-new-project --example https://github.com/fishefam/next-q-template
+   cd my-new-project
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Or Clone the Repository Manually:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```sh
+   git clone https://github.com/fishefam/next-q-template.git my-new-project
+   cd my-new-project
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Install Dependencies (Bun Only):**
 
-## Learn More
+   ```sh
+   bun install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Start the Development Server:**
+   ```sh
+   bun run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This will start the application at `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
+- This template is **Bun-only** and does not support `npm` or `yarn` or `pnpm`. Please ensure you have Bun installed before using this template.
+- You can modify the configuration files such as `next.config.js`, `tailwind.config.js`, and `tsconfig.json` to fit your project needs.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For more details, refer to the official Bun documentation: [https://bun.sh/](https://bun.sh/).
